@@ -16,15 +16,15 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
+      await deleteServerCookie("accessToken");
       await deleteServerCookie("auth");
       router.replace("/");
-      localStorage.removeItem("LoginEmail");
     } catch (error) {
       console.error("로그아웃 실패:", error);
-      Modal.alert({
-        title: "에러",
-        content: "로그아웃 처리 중 문제가 발생했습니다.",
-      });
+      // Modal.alert({
+      //   title: "에러",
+      //   content: "로그아웃 처리 중 문제가 발생했습니다.",
+      // });
     }
   };
   const router = useRouter();
